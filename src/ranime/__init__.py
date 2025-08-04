@@ -17,7 +17,7 @@ from rich.text import Text
 CACHE_PATH = pathlib.Path(
     os.environ.get("CACHE_PATH") or pathlib.Path.home() / ".cache/ranime/"
 )
-CACHE_PATH.mkdir(exist_ok=True)
+CACHE_PATH.mkdir(exist_ok=True, parents=True)
 
 
 def sha256_hash(data: str) -> str:
