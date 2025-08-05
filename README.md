@@ -1,7 +1,7 @@
 # ranime
 Find random anime from https://randomanime.org
 
-> [!NOTE] 
+> [!TIP] 
 > A terminal emulator with support for either Kitty graphics or iTerm2
 > graphics protocol is recommended.
 
@@ -14,17 +14,17 @@ pip install git+https://github.com/eeriemyxi/ranime
 
 # Usage
 ```
-ranime --auth-token <AUTH_TOKEN> --id <id>
+ranime --auth-token <AUTH_TOKEN> --id <ID>
 ```
-
-It automatically saves the auth token and id for the subsequent runs, so you can
-just do `ranime` from then on.
+> [!NOTE]
+> It automatically saves the authentication token and ID for the subsequent runs, so you can
+> just do `ranime` next time.
 
 # Guide
-## Getting Auth Token
+## Getting Authentication Token
 Open DevTools (inspect element) on your browser, go to Network tab, then in that
 state, go to https://randomanime.org and create a new list. Then grab the
-authentical token as shown below:
+authentication token as shown below:
 
 ![](https://files.catbox.moe/jat1xu.png)
 
