@@ -1,6 +1,15 @@
 # ranime
 Find random anime from https://randomanime.org
 
+This small project addresses an issue with the site that had been bothering me
+for a while. The site doesn't let you save the current progress when you view a
+generated list, so the next time you'd want to pick a random anime, you'd either
+have to create another list (which is time-consuming because you have to
+reselect the preferences) or go back to that position yourself.
+
+There is also the Spinner feature but it's unnecessarily slow and suffers
+from the same problems.
+
 > [!TIP] 
 > A terminal emulator with support for either Kitty graphics or iTerm2
 > graphics protocol is recommended.
