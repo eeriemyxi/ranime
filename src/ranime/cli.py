@@ -12,9 +12,9 @@ from ranime import (CACHE_PATH, display_anime_info, fetch_anilist_cover_image,
     help="Find random anime from https://randomanime.org",
     epilog="Source code: https://github.com/eeriemyxi/ranime",
 )
-@click.option("--auth-key", "-a", default=None)
-@click.option("--id", "-i", default=None)
-@click.option("--preset-name", "-p", default=None)
+@click.option("--auth-key", "-a", default=None, help="Authentication token")
+@click.option("--id", "-i", default=None, help="ID of the generated list from randomanime.org")
+@click.option("--preset-name", "-p", default=None, help="Name of the preset to save --auth-key and --id under")
 def main(auth_key: str, id: str, preset_name: str):
     def load_or_save(name: str, value: str, tip: str):
         path = CACHE_PATH / name
