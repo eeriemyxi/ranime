@@ -23,11 +23,24 @@ pip install git+https://github.com/eeriemyxi/ranime
 
 # Usage
 ```
-ranime --auth-token <AUTH_TOKEN> --id <ID>
+ranime --auth-token <AUTH_TOKEN> --id <ID> --preset-name my-preset
 ```
 > [!NOTE]
-> It automatically saves the authentication token and ID for the subsequent runs, so you can
+> It automatically saves the authentication token, preset name, and ID for the subsequent runs, so you can
 > just do `ranime` next time.
+
+### Presets
+Presets allow you to preserve --auth-token and --id under custom namespaces.
+They are intended to allow you to switch between generated lists basically.
+
+For example, you can do:
+```
+ranime --auth-token ... --id 442Df2 --preset-name comedy
+```
+
+Then from next time you can do `ranime -p comedy` to pick the --id value under
+that preset. I should mention that just doing `ranime` will also work as long as
+you don't intend to change the preset from the one that was used the last time.
 
 # Guide
 ## Getting Authentication Token
