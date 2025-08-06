@@ -14,32 +14,25 @@ from ranime import (CACHE_PATH, display_anime_info, fetch_anilist_cover_image,
 )
 @click.option("--auth-key", "-a", default=None)
 @click.option("--id", "-i", default=None)
-def main(auth_key: str, id: str):
-    path = CACHE_PATH / "auth_key"
-    if not auth_key:
-        try:
-            auth_key = path.read_text()
-        except FileNotFoundError:
-            print(
-                f"ERROR: --auth-key was not provided but {path} doesn't exist yet either.\n\nTIP: Run ranime with --auth-key at least once."
-            )
-            exit(1)
-    else:
-        with open(path, "w") as file:
-            file.write(auth_key)
+@click.option("--preset-name", "-p", default=None)
+def main(auth_key: str, id: str, preset_name: str):
+    def load_or_save(name: str, value: str, tip: str):
+        path = CACHE_PATH / name
+        if not value:
+            try:
+                value = path.read_text()
+            except FileNotFoundError:
+                print(
+                    f"ERROR: --{name.replace('_', '-')} was not provided but {path} doesn't exist yet either.\n\nTIP: {tip}"
+                )
+                exit(1)
+        else:
+            path.write_text(value)
+        return value
 
-    path = CACHE_PATH / "id"
-    if not id:
-        try:
-            id = path.read_text()
-        except FileNotFoundError:
-            print(
-                f"ERROR: --id was not provided but {path} doesn't exist yet either.\n\nTIP: Run ranime with --id at least once."
-            )
-            exit(1)
-    else:
-        with open(path, "w") as file:
-            file.write(id)
+    preset_name = load_or_save("active_preset", preset_name, "Run ranime with --preset-name at least once.")
+    auth_key = load_or_save(f"{preset_name}_auth_key", auth_key, "Run ranime with --auth-key at least once.")
+    id = load_or_save(f"{preset_name}_id", id, "Run ranime with --id at least once.")
 
     page_amnt = get_randomeanime_page(auth_key=auth_key, id=id, page=1).json()[
         "resultsTotal"
